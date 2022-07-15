@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <title>Games store</title>
+</head>
+
+<body>
+  <div class="wrapper-body">
+    <header class="header">
+      <h1 class="header__title">Games store</h1>
+      <div class="cart">
+        <button class="cart__icon"></button>
+      </div>
+    </header>
+    <main class="main">
+      <section class="filters">
+        <h2 class="filters__title">Choose your game:</h2>
+        <div class="wrapper-filters">
+          <div class="filter__search-and-sort">
+            <div class="filter-search">
+              <label for="filter-search__input">
+                <h3 class="filters__title">Search</h3>
+              </label>
+              <input class="filter-search__input" placeholder="Game's name" type="search" name="filter-search__input"
+                id="filter-search__input">
+              <input class="filter-search__submit" type="submit" value="">
+            </div>
+            <div class="filter-sort">
+              <h3 class="filters__title">Sort</h3>
+              <select class="filter-sort__select" name="" id="">
+                <option value="By name, A to Z">By name, A to Z</option>
+                <option value="By name, Z to A">By name, Z to A</option>
+                <option value="By year, up">By year &#8593</option>
+                <option value="By year, down">By year &#8595</option>
+                <option value="By rating, up">By rating &#8593</option>
+                <option value="By rating, down">By rating &#8595</option>
+              </select>
+            </div>
+
+          </div>
+
+          <div class="filters-by-value">
+            <div class="filter-genre">
+              <h3 class="filters__title">Genre</h3>
+              <ul class="filters__list">
+                <li class="filter__item"><button class="filter__btn filter__btn--active">Action</button></li>
+                <li class="filter__item"><button class="filter__btn">Strategy</button></li>
+                <li class="filter__item"><button class="filter__btn">RPG</button></li>
+              </ul>
+            </div>
+            <div class="filter-company">
+              <h3 class="filters__title">Company</h3>
+              <ul class="filters__list">
+                <li class="filter__item"><button class="filter__btn">Bethesda</button></li>
+                <li class="filter__item"><button class="filter__btn">Ubisoft</button></li>
+                <li class="filter__item"><button class="filter__btn filter__btn--active">Valve</button></li>
+                <li class="filter__item"><button class="filter__btn">Sony</button></li>
+                <li class="filter__item"><button class="filter__btn">EA</button></li>
+              </ul>
+            </div>
+            <div class="filter-platform">
+              <h3 class="filters__title">Platform</h3>
+              <ul class="filters__list">
+                <li class="filter__item"><button class="filter__btn filter__btn--active">PC</button></li>
+                <li class="filter__item"><button class="filter__btn">PlayStation</button></li>
+                <li class="filter__item"><button class="filter__btn">Xbox</button></li>
+              </ul>
+            </div>
+            <!-- <div class="filter-popular">
+              <label for="filter-popular__checkbox">
+                <h3 class="filters__title">Most popular</h3>
+              </label>
+              <input class="filters__checkbox" type="checkbox" name="filter-popular__checkbox"
+                id="filter-popular__checkbox">
+            </div> -->
+          </div>
+
+          <div class="filters-by-range">
+            <div class="filter-year">
+              <h3 class="filters__title">Year</h3>
+              <input type="range" min="2000" step="1" max="2022" value="2022">
+            </div>
+            <div class="filter-rating">
+              <h3 class="filters__title">Rating</h3>
+              <input type="range" min="1" step="1" max="5" value="3">
+            </div>
+
+          </div>
+        </div>
+        <button class="filter__reset-btn">Reset filters</button>
+      </section>
+      <section class="games">
+        <h2 class="games__title">Games for you:</h2>
+        <div class="wrapper-games">
+          <div class="game-card">
+            <span class="game-card__image"></span>
+            <h4 class="game-card__title">Max Payne</h4>
+            <ul class="game-card__list">
+              <li class="game-card__item">
+                Year: <span class="game-card__year">2001</span>
+              </li>
+              <li class="game-card__item">
+                Platform: <span class="game-card__platform">PC</span>
+              </li>
+              <li class="game-card__item">
+                Company: <span class="game-card__company">Remedy Entertainment</span>
+              </li>
+              <li class="game-card__item">
+                Rating: <span class="game-card__rating">10</span>
+              </li>
+            </ul>
+          </div>
+          <div class="game-card">
+            <span class="game-card__image"></span>
+            <h4 class="game-card__title">Max Payne</h4>
+            <ul class="game-card__list">
+              <li class="game-card__item">
+                Year: <span class="game-card__year">2001</span>
+              </li>
+              <li class="game-card__item">
+                Platform: <span class="game-card__platform">PC</span>
+              </li>
+              <li class="game-card__item">
+                Company: <span class="game-card__company">Remedy Entertainment</span>
+              </li>
+              <li class="game-card__item">
+                Rating: <span class="game-card__rating">10</span>
+              </li>
+            </ul>
+          </div>
+          <div class="game-card">
+            <span class="game-card__image"></span>
+            <h4 class="game-card__title">Max Payne</h4>
+            <ul class="game-card__list">
+              <li class="game-card__item">
+                Year: <span class="game-card__year">2001</span>
+              </li>
+              <li class="game-card__item">
+                Platform: <span class="game-card__platform">PC</span>
+              </li>
+              <li class="game-card__item">
+                Company: <span class="game-card__company">Remedy Entertainment</span>
+              </li>
+              <li class="game-card__item">
+                Rating: <span class="game-card__rating">10</span>
+              </li>
+            </ul>
+          </div>
+          <div class="game-card">
+            <span class="game-card__image"></span>
+            <h4 class="game-card__title">Max Payne</h4>
+            <ul class="game-card__list">
+              <li class="game-card__item">
+                Year: <span class="game-card__year">2001</span>
+              </li>
+              <li class="game-card__item">
+                Platform: <span class="game-card__platform">PC</span>
+              </li>
+              <li class="game-card__item">
+                Company: <span class="game-card__company">Remedy Entertainment</span>
+              </li>
+              <li class="game-card__item">
+                Rating: <span class="game-card__rating">10</span>
+              </li>
+            </ul>
+          </div>
+          <div class="game-card">
+            <span class="game-card__image"></span>
+            <h4 class="game-card__title">Max Payne</h4>
+            <ul class="game-card__list">
+              <li class="game-card__item">
+                Year: <span class="game-card__year">2001</span>
+              </li>
+              <li class="game-card__item">
+                Platform: <span class="game-card__platform">PC</span>
+              </li>
+              <li class="game-card__item">
+                Company: <span class="game-card__company">Remedy Entertainment</span>
+              </li>
+              <li class="game-card__item">
+                Rating: <span class="game-card__rating">10</span>
+              </li>
+            </ul>
+          </div>
+          <div class="game-card">
+            <span class="game-card__image"></span>
+            <h4 class="game-card__title">Max Payne</h4>
+            <ul class="game-card__list">
+              <li class="game-card__item">
+                Year: <span class="game-card__year">2001</span>
+              </li>
+              <li class="game-card__item">
+                Platform: <span class="game-card__platform">PC</span>
+              </li>
+              <li class="game-card__item">
+                Company: <span class="game-card__company">Remedy Entertainment</span>
+              </li>
+              <li class="game-card__item">
+                Rating: <span class="game-card__rating">10</span>
+              </li>
+            </ul>
+          </div>
+          <div class="game-card">
+            <span class="game-card__image"></span>
+            <h4 class="game-card__title">Max Payne</h4>
+            <ul class="game-card__list">
+              <li class="game-card__item">
+                Year: <span class="game-card__year">2001</span>
+              </li>
+              <li class="game-card__item">
+                Platform: <span class="game-card__platform">PC</span>
+              </li>
+              <li class="game-card__item">
+                Company: <span class="game-card__company">Remedy Entertainment</span>
+              </li>
+              <li class="game-card__item">
+                Rating: <span class="game-card__rating">10</span>
+              </li>
+            </ul>
+          </div>
+          <div class="game-card">
+            <span class="game-card__image"></span>
+            <h4 class="game-card__title">Max Payne</h4>
+            <ul class="game-card__list">
+              <li class="game-card__item">
+                Year: <span class="game-card__year">2001</span>
+              </li>
+              <li class="game-card__item">
+                Platform: <span class="game-card__platform">PC</span>
+              </li>
+              <li class="game-card__item">
+                Company: <span class="game-card__company">Remedy Entertainment</span>
+              </li>
+              <li class="game-card__item">
+                Rating: <span class="game-card__rating">10</span>
+              </li>
+            </ul>
+          </div>
+          <div class="game-card">
+            <span class="game-card__image"></span>
+            <h4 class="game-card__title">Max Payne</h4>
+            <ul class="game-card__list">
+              <li class="game-card__item">
+                Year: <span class="game-card__year">2001</span>
+              </li>
+              <li class="game-card__item">
+                Platform: <span class="game-card__platform">PC</span>
+              </li>
+              <li class="game-card__item">
+                Company: <span class="game-card__company">Remedy Entertainment</span>
+              </li>
+              <li class="game-card__item">
+                Rating: <span class="game-card__rating">10</span>
+              </li>
+            </ul>
+          </div>
+          <div class="game-card">
+            <span class="game-card__image"></span>
+            <h4 class="game-card__title">Max Payne</h4>
+            <ul class="game-card__list">
+              <li class="game-card__item">
+                Year: <span class="game-card__year">2001</span>
+              </li>
+              <li class="game-card__item">
+                Platform: <span class="game-card__platform">PC</span>
+              </li>
+              <li class="game-card__item">
+                Company: <span class="game-card__company">Remedy Entertainment</span>
+              </li>
+              <li class="game-card__item">
+                Rating: <span class="game-card__rating">10</span>
+              </li>
+            </ul>
+          </div>
+      </section>
+    </main>
+  </div>
+</body>
+
+</html>

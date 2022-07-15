@@ -1,0 +1,229 @@
+html {
+  font-family: 'Roboto', sans-serif;
+  font-size: 10px;
+}
+
+body {
+  font-size: 1.4rem;
+}
+
+.wrapper-body {
+  margin: 0 auto;
+  width: 1440px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.header__title {
+  align-self: start;
+}
+
+.cart__icon {
+  width: 50px;
+  height: 50px;
+  outline: none;
+  border: 0;
+  background: transparent;
+  background-image: url(./src/assets/icons/cart.jpg);
+  background-size: contain;
+  cursor: pointer;
+}
+
+.cart__icon::before {
+  content: '3';
+  vertical-align: baseline;
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: rgb(255, 38, 0);
+  color: #ffffff;
+  border-radius: 10px;
+
+
+}
+
+.main {}
+
+.filters {
+
+  box-shadow: 1px 4px 10px rgb(170, 170, 170);
+  padding: 20px;
+}
+
+.wrapper-filters {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.filters__title {}
+
+.filter-search {}
+
+.filter-search__input {
+  outline: 0px;
+  border: 1px solid rgb(212, 212, 212);
+  border-radius: 2px;
+  padding-left: 10px;
+  margin-left: 20px;
+  min-width: 50%;
+}
+
+.filter-search__input:focus {
+
+  border: 1px solid #7cbb00;
+  ;
+  border-radius: 2px;
+  padding-left: 10px;
+  margin-left: 20px;
+  min-width: 50%;
+}
+
+.filter-search__submit {
+  border: 0px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  background-image: url(./src/assets/icons/search-icon.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.filter-sort {}
+
+.filter-sort__select {
+  margin-left: 20px;
+  border: 1px solid rgb(212, 212, 212);
+  background-color: #ffffff;
+  border-radius: 4px;
+
+}
+
+.filter__search-and-sort {}
+
+.filters-by-value {}
+
+.filter-genre {}
+
+.filters__list {
+  display: flex;
+  padding: 0px;
+  margin-left: 20px;
+
+  list-style-type: none;
+}
+
+.filter__item {}
+
+.filter__btn {
+  background-color: white;
+  border-radius: 4px;
+  border: 1px solid rgb(212, 212, 212);
+  cursor: pointer;
+
+}
+
+.filter__btn:hover {
+  background-color: #7cbb00;
+  color: #ffffff;
+}
+
+.filter__btn--active {
+  background-color: #7cbb00;
+  color: #ffffff;
+}
+
+.filter-company {}
+
+.filter-platform {}
+
+.filter-platform__title {}
+
+/* .filter-popular {} */
+
+/* .filters__checkbox {} */
+
+.filters-by-range {}
+
+.filter-year {}
+
+.filter-rating {}
+
+
+
+.filter__reset-btn {
+  display: block;
+  margin-left: 20px;
+  background-color: #00A1F1;
+  border-radius: 4px;
+  color: white;
+  border: 1px solid white;
+  cursor: pointer;
+  padding: 10px 15px;
+}
+
+.filter__reset-btn:hover {
+  background-color: #016ba1;
+}
+
+.filter__reset-btn:active {
+  background-color: #00466c;
+}
+
+.games {
+  margin: 20px;
+}
+
+.games__title {}
+
+.wrapper-games {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.game-card {
+  cursor: pointer;
+  padding: 20px;
+}
+
+.game-card:hover {
+  box-shadow: 1px 4px 10px rgb(170, 170, 170);
+
+}
+
+.game-card:active {
+  box-shadow: none
+}
+
+.game-card__title {
+  font-size: 1.6rem;
+
+}
+
+.game-card__image {
+  display: block;
+  width: 200px;
+  height: 200px;
+  background-image: url(./src/assets/img/max-payne.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.game-card__list {
+  list-style: none;
+  padding: 0;
+}
+
+.game-card__item {}
+
+.game-card__year {}
+
+.game-card__platform {}
+
+.game-card__company {}
+
+.game-card__rating {}
