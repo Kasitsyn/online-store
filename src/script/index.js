@@ -19,20 +19,25 @@ const DOM = {
 window.onload = () => {
   //============= HANDLERS =============
 
-const addSearchSubmitHandler = () => {
-  DOM.search.submitBtn.addEventListener('click', () => getSearchInputValue())
-}
+  const addSearchSubmitHandler = () => {
+    DOM.search.submitBtn.addEventListener('click', () => {
+      const searchResults = getSearchResults(data)
+      DOM.games.wrapperGames.innerHTML = ''
+      renderArticles(searchResults)
 
-const addSearchInputHandler = () => {
-  DOM.search.input.addEventListener('input', () => getSearchInputValue())
-}
+    })
+  }
 
-const addSearchFormHandler = () => {
-  DOM.search.form.addEventListener('submit', (e) => {
-    e.preventDefault()
-    getSearchInputValue(e)
-  })
-}
+  const addSearchInputHandler = () => {
+    DOM.search.input.addEventListener('input', () => DOM.search.input.value)
+  }
+
+  const addSearchFormHandler = () => {
+    DOM.search.form.addEventListener('submit', (e) => {
+      e.preventDefault()
+      return DOM.search.input.value
+    })
+  }
 
   // ============= GAME ARTICLES =============
 
@@ -44,16 +49,17 @@ const addSearchFormHandler = () => {
     return articles
   }
 
-  const renderArticles = () => {
+  const renderArticles = (data) => {
     const articles = generateArticles(data)
     articles.forEach(article => DOM.games.wrapperGames.append(article.generateArticle()))
   }
 
-  const getSearchInputValue = (e) => {
+  // ============= SEARCH =============
 
-    console.log(DOM.search.input.value)
-    return DOM.search.input.value
-
+  const getSearchResults = (data) => {
+    const inputValue = DOM.search.input.value
+    const searchResult = data.filter(article => article.title.toLowerCase().includes(inputValue.toLowerCase()))
+    return searchResult
   }
 
   
@@ -64,7 +70,7 @@ const addSearchFormHandler = () => {
   addSearchSubmitHandler()
   addSearchFormHandler()
 
-  renderArticles()
+  renderArticles(data)
 
 
 }
