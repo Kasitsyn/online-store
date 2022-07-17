@@ -3,8 +3,13 @@ html {
   font-size: 10px;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-size: 1.4rem;
+  
 }
 
 .wrapper-body {
@@ -42,8 +47,6 @@ body {
   background-color: rgb(255, 38, 0);
   color: #ffffff;
   border-radius: 10px;
-
-
 }
 
 .main {}
@@ -63,7 +66,12 @@ body {
 
 .filter-search {}
 
+.input-wrapper {
+  position: relative;
+}
+
 .filter-search__input {
+
   outline: 0px;
   border: 1px solid rgb(212, 212, 212);
   border-radius: 2px;
@@ -75,11 +83,20 @@ body {
 .filter-search__input:focus {
 
   border: 1px solid #7cbb00;
-  ;
   border-radius: 2px;
   padding-left: 10px;
   margin-left: 20px;
   min-width: 50%;
+}
+
+.filter-search__reset-btn {
+  position: absolute;
+  right: 215px;
+  top: 0;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
 }
 
 .filter-search__submit {
@@ -143,9 +160,73 @@ body {
 
 .filter-platform__title {}
 
-/* .filter-popular {} */
+.filter-popular h3 {}
 
-/* .filters__checkbox {} */
+.filter-popular__label {
+  display: flex;
+  justify-content: start;
+  gap: 10px;
+  align-items: center;
+}
+
+
+/* 
+.filter-popular__label::after {
+  content: '';
+  display: block; 
+  width: 15px;
+  height: 15px;
+  border: 1px solid rgb(212, 212, 212);
+  cursor: pointer;
+}
+
+.filter-popular__label::after :hover {
+ background-color: #7cbb00;
+} */
+
+.filters__checkbox {
+  display: none;
+}
+
+.checkmark {
+  position: relative;
+  display: inline-block;
+  height: 18px;
+  width: 18px;
+  border: 1px solid rgb(212, 212, 212);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.checkmark:hover {
+  background-color:#7cbb00;
+}
+
+.filter-popular input:checked ~ .checkmark {
+  background-color: #7cbb00;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.filter-popular input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.filter-popular .checkmark:after {
+  left: 6px;
+  top: 0px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
 
 .filters-by-range {}
 
@@ -186,9 +267,13 @@ body {
 }
 
 .game-card {
+  position: relative;
   cursor: pointer;
   padding: 20px;
+  width: 250px;
 }
+
+
 
 .game-card:hover {
   box-shadow: 1px 4px 10px rgb(170, 170, 170);
@@ -201,19 +286,35 @@ body {
 
 .game-card__title {
   font-size: 1.6rem;
+  height: 4rem;
+}
 
+.image-wrapper {
+  margin: 0 auto;
+  width: 200px;
+  height: 300px;
 }
 
 .game-card__image {
   display: block;
-  width: 200px;
-  height: 200px;
-  background-image: url(./src/assets/img/max-payne.jpg);
+  
+  width: 100%;
+}
+
+.game-card::after {
+  content: '';
+  width: 40px;
+  height: 40px;
+  background-image: url(./src/assets/icons/tick-mark.png);
   background-size: contain;
   background-repeat: no-repeat;
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
 }
 
 .game-card__list {
+
   list-style: none;
   padding: 0;
 }
