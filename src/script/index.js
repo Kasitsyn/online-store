@@ -11,6 +11,14 @@ export const renderArticles = (articles) => {
   articles.forEach(article => DOM.games.wrapperGames.append(article.generateArticle()))
 }
 
+export const renderFilters = (filters, e) => {
+  const tags = document.querySelectorAll('.filter__btn')
+
+  tags.forEach(tag => {
+    filters.has(tag.innerText) ? tag.classList.add('filter__btn--active') : tag.classList.remove('filter__btn--active')
+  })
+}
+
 // ============= SEARCH =============
 
 export const getSearchResults = (dataFromStore) => {
@@ -21,8 +29,8 @@ export const getSearchResults = (dataFromStore) => {
 
 // ============= SORT =============
 
-export const sortByName = (articles) => {
-  const value = DOM.sort.select.value
+export const sortArticles = (articles) => {
+  const value = DOM.sort.select.value || 'by-name-up'
   const sortArticles = [...articles]
   const collator = new Intl.Collator('en', { sensitivity: 'base' });
 
@@ -57,5 +65,23 @@ export const sortByName = (articles) => {
   return sortArticles
 
 }
+
+// ============= FILTER =============
+
+export const filtersByValueHandler = (e, filtersActive) => {
+  const filterOptions = new Set(filtersActive)
+
+  if (e.target.className.includes('filter__btn')) {
+    const tag = e.target
+    filterOptions.has(tag.innerText) ?
+      filterOptions.delete(tag.innerText) :
+      filterOptions.add(tag.innerText)
+  }
+
+
+  // console.log(filterOptions)
+  return filterOptions
+}
+
 
 init()

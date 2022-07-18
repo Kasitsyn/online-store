@@ -1,6 +1,6 @@
 //============= HANDLERS =============
 
-import { getSearchResults, renderArticles, sortByName } from "./index.js"
+import { filtersByValueHandler, getSearchResults, renderArticles, renderFilters, sortArticles } from "./index.js"
 import { storageData, store } from "./Storage.js"
 import { DOM } from "./UI.js"
 
@@ -26,7 +26,15 @@ export const addSearchFormHandler = () => {
 
 export const addSortSelectHandler = () => {
   DOM.sort.select.addEventListener('change', () => {
-    store.storeArticles(sortByName(store.articles))
+    store.storeArticles(sortArticles(store.articles))
     renderArticles(store.articles)
   })
+}
+
+export const addFilterTagsHandler = () => {
+  DOM.filters.filtersByValue.addEventListener('click', (e) => {
+    store.storeFiltersActive(filtersByValueHandler(e, store.filtersActive))
+    renderFilters(store.filtersActive, e)
+  })
+
 }

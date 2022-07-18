@@ -65,5 +65,11 @@ export const store = {
 
   storeArticles(data) {
     this.articles = [...data]
+  },
+
+  filtersActive: new Set(),
+
+  storeFiltersActive(filterOptions) {
+    this.filtersActive = new Set(filterOptions)
   }
 }

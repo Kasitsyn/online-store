@@ -1,7 +1,7 @@
 //============= INIT =============
 
-import { addSearchFormHandler, addSearchInputHandler, addSearchSubmitHandler, addSortSelectHandler } from "./Handlers.js"
-import { renderArticles, sortByName } from "./index.js"
+import { addFilterTagsHandler, addSearchFormHandler, addSearchInputHandler, addSearchSubmitHandler, addSortSelectHandler } from "./Handlers.js"
+import { renderArticles, sortArticles } from "./index.js"
 import { storageData, store } from "./Storage.js"
 import { DOM } from "./UI.js"
 
@@ -13,8 +13,10 @@ export const init = () => {
   addSearchSubmitHandler()
   addSearchFormHandler()
   addSortSelectHandler()
+  addFilterTagsHandler()
 
   store.createArticles(storageData)
+  store.storeArticles(sortArticles(store.articles))
   renderArticles(store.articles)
 
 }
