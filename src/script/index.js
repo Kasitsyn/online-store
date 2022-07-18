@@ -1,5 +1,8 @@
+'use strict'
+
 import { Article } from "./Article.js"
 import { data } from "./Storage.js"
+
 
 //============= DOM ELEMENTS =============
 
@@ -9,21 +12,24 @@ const DOM = {
     submitBtn: document.querySelector('.filter-search__submit'),
     form: document.querySelector('.search-form')
   },
+  sort: {
+    select: document.querySelector('.filter-sort__select'),
+  },
   games: {
     wrapperGames: document.querySelector('.wrapper-games'),
-  }
+  },
 }
 
-
-
 window.onload = () => {
+
   //============= HANDLERS =============
 
   const addSearchSubmitHandler = () => {
     DOM.search.submitBtn.addEventListener('click', () => {
       const searchResults = getSearchResults(data)
       DOM.games.wrapperGames.innerHTML = ''
-      renderArticles(searchResults)
+      store.storeArticles(searchResults)
+      renderArticles()
 
     })
   }
@@ -50,27 +56,65 @@ window.onload = () => {
   }
 
   const renderArticles = (data) => {
-    const articles = generateArticles(data)
+    // const articles = generateArticles(data)
+    const articles = store.articles
     articles.forEach(article => DOM.games.wrapperGames.append(article.generateArticle()))
   }
 
   // ============= SEARCH =============
 
-  const getSearchResults = (data) => {
+  const getSearchResults = (dataFromStore) => {
     const inputValue = DOM.search.input.value
-    const searchResult = data.filter(article => article.title.toLowerCase().includes(inputValue.toLowerCase()))
+    const searchResult = dataFromStore.filter(article => article.title.toLowerCase().includes(inputValue.toLowerCase()))
     return searchResult
   }
 
+  // ============= SORT =============
+
+const sortByName = (direction) => { 
+  const value = DOM.sort.select.value
   
+  switch (value) {
+    case 'by-name-up':
+      sort()
+      break;
+  
+    default:
+      break;
+  }
+}
+
+const sort = () => { 
+
+ }
+
+sortByName()
+
+//============= STORE =============
+
+const store = {
+  articles: [],
+
+  storeArticles(data) {
+    this.articles = generateArticles(data)
+  }
+}
 
 
+//============= INIT =============
+
+const init = () => {
+
+  DOM.search.input.focus()
 
   addSearchInputHandler()
   addSearchSubmitHandler()
   addSearchFormHandler()
 
-  renderArticles(data)
+  store.storeArticles(data)
+  renderArticles()
+  
+}
 
-
+init()
 }
