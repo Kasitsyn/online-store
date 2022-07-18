@@ -26,6 +26,9 @@ export class Article {
 
     template += `<ul class="game-card__list">`
 
+    this.genre &&
+      (template += `<li class="game-card__item">Genre: ${this.genre}</li>`)
+
     this.year &&
       (template += `<li class="game-card__item">Year: ${this.year}</li>`)
 

@@ -15,7 +15,7 @@ export const renderFilters = (filters, e) => {
   const tags = document.querySelectorAll('.filter__btn')
 
   tags.forEach(tag => {
-    filters.has(tag.innerText) ? tag.classList.add('filter__btn--active') : tag.classList.remove('filter__btn--active')
+    filters.has(tag.innerText.toLowerCase()) ? tag.classList.add('filter__btn--active') : tag.classList.remove('filter__btn--active')
   })
 }
 
@@ -68,19 +68,31 @@ export const sortArticles = (articles) => {
 
 // ============= FILTER =============
 
-export const filtersByValueHandler = (e, filtersActive) => {
+export const getActiveFiltersOptions = (e, filtersActive) => {
   const filterOptions = new Set(filtersActive)
 
   if (e.target.className.includes('filter__btn')) {
     const tag = e.target
-    filterOptions.has(tag.innerText) ?
-      filterOptions.delete(tag.innerText) :
-      filterOptions.add(tag.innerText)
+    filterOptions.has(tag.innerText.toLowerCase()) ?
+      filterOptions.delete(tag.innerText.toLowerCase()) :
+      filterOptions.add(tag.innerText.toLowerCase())
   }
-
-
-  // console.log(filterOptions)
   return filterOptions
+}
+
+export const filterArticles = (articles, filtersActive) => {
+  const filterOptions = new Set(filtersActive)
+  // console.log(articles)
+  const filteredArticles = []
+
+  articles.forEach(article => {
+    for (let key in article) {
+      filterOptions.has(article[key].toLowerCase()) && filteredArticles.push(article)
+    }
+  })
+  
+  // console.log(filteredArticles)
+  return filteredArticles
 }
 
 
