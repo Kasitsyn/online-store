@@ -1,120 +1,61 @@
 'use strict'
 
-import { Article } from "./Article.js"
-import { data } from "./Storage.js"
+import { init } from "./Init.js"
+import { storageData, store } from "./Storage.js"
+import { DOM } from "./UI.js"
 
+// ============= RENDER =============
 
-//============= DOM ELEMENTS =============
-
-const DOM = {
-  search: {
-    input: document.querySelector('.filter-search__input'),
-    submitBtn: document.querySelector('.filter-search__submit'),
-    form: document.querySelector('.search-form')
-  },
-  sort: {
-    select: document.querySelector('.filter-sort__select'),
-  },
-  games: {
-    wrapperGames: document.querySelector('.wrapper-games'),
-  },
+export const renderArticles = (articles) => {
+  DOM.games.wrapperGames.innerHTML = ''
+  articles.forEach(article => DOM.games.wrapperGames.append(article.generateArticle()))
 }
 
-window.onload = () => {
+// ============= SEARCH =============
 
-  //============= HANDLERS =============
+export const getSearchResults = (dataFromStore) => {
+  const inputValue = DOM.search.input.value
+  const searchResult = dataFromStore.filter(article => article.title.toLowerCase().includes(inputValue.toLowerCase()))
+  return searchResult
+}
 
-  const addSearchSubmitHandler = () => {
-    DOM.search.submitBtn.addEventListener('click', () => {
-      const searchResults = getSearchResults(data)
-      DOM.games.wrapperGames.innerHTML = ''
-      store.storeArticles(searchResults)
-      renderArticles()
+// ============= SORT =============
 
-    })
-  }
-
-  const addSearchInputHandler = () => {
-    DOM.search.input.addEventListener('input', () => DOM.search.input.value)
-  }
-
-  const addSearchFormHandler = () => {
-    DOM.search.form.addEventListener('submit', (e) => {
-      e.preventDefault()
-      return DOM.search.input.value
-    })
-  }
-
-  // ============= GAME ARTICLES =============
-
-  const generateArticles = (data) => {
-    let articles = []
-    data.forEach(obj => {
-      articles.push(new Article(obj))
-    });
-    return articles
-  }
-
-  const renderArticles = (data) => {
-    // const articles = generateArticles(data)
-    const articles = store.articles
-    articles.forEach(article => DOM.games.wrapperGames.append(article.generateArticle()))
-  }
-
-  // ============= SEARCH =============
-
-  const getSearchResults = (dataFromStore) => {
-    const inputValue = DOM.search.input.value
-    const searchResult = dataFromStore.filter(article => article.title.toLowerCase().includes(inputValue.toLowerCase()))
-    return searchResult
-  }
-
-  // ============= SORT =============
-
-const sortByName = (direction) => { 
+export const sortByName = (articles) => {
   const value = DOM.sort.select.value
-  
+  const sortArticles = [...articles]
+  const collator = new Intl.Collator('en', { sensitivity: 'base' });
+
+  const sort = (props) => {
+    value.includes('up') ?
+      sortArticles.sort((x, y) => collator.compare(x[props], y[props])) :
+      sortArticles.sort((x, y) => collator.compare(y[props], x[props]))
+  }
+
   switch (value) {
     case 'by-name-up':
-      sort()
+      sort('title')
       break;
-  
+    case 'by-name-down':
+      sort('title')
+      break;
+    case 'by-year-up':
+      sort('year')
+      break;
+    case 'by-year-down':
+      sort('year')
+      break;
+    case 'by-rating-up':
+      sort('rating')
+      break;
+    case 'by-rating-down':
+      sort('rating')
+      break;
     default:
       break;
   }
-}
+  return sortArticles
 
-const sort = () => { 
-
- }
-
-sortByName()
-
-//============= STORE =============
-
-const store = {
-  articles: [],
-
-  storeArticles(data) {
-    this.articles = generateArticles(data)
-  }
-}
-
-
-//============= INIT =============
-
-const init = () => {
-
-  DOM.search.input.focus()
-
-  addSearchInputHandler()
-  addSearchSubmitHandler()
-  addSearchFormHandler()
-
-  store.storeArticles(data)
-  renderArticles()
-  
 }
 
 init()
-}

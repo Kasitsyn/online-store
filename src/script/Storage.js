@@ -1,4 +1,6 @@
-export const data = [
+import { generateArticles } from "./Article.js"
+
+export const storageData = [
   {
     id: 0,
     urlToImg: '../../src/assets/img/games-img/max-payne.jpg',
@@ -52,3 +54,16 @@ export const data = [
   
 ]
 
+//============= STORE =============
+ 
+export const store = {
+  articles: [],
+
+  createArticles(data) {
+    this.articles = generateArticles(data)
+  },
+
+  storeArticles(data) {
+    this.articles = [...data]
+  }
+}

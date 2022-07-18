@@ -41,5 +41,12 @@ export class Article {
     article.innerHTML = template
     return article
   }
+}
 
+export const generateArticles = (data) => {
+  let articles = []
+  data.forEach(obj => {
+    articles.push(new Article(obj))
+  });
+  return articles
 }
