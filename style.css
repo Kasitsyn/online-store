@@ -9,7 +9,7 @@ html {
 
 body {
   font-size: 1.4rem;
-  
+
 }
 
 .wrapper-body {
@@ -170,21 +170,6 @@ body {
   align-items: center;
 }
 
-
-/* 
-.filter-popular__label::after {
-  content: '';
-  display: block; 
-  width: 15px;
-  height: 15px;
-  border: 1px solid rgb(212, 212, 212);
-  cursor: pointer;
-}
-
-.filter-popular__label::after :hover {
- background-color: #7cbb00;
-} */
-
 .filters__checkbox {
   display: none;
 }
@@ -200,10 +185,10 @@ body {
 }
 
 .checkmark:hover {
-  background-color:#7cbb00;
+  background-color: #7cbb00;
 }
 
-.filter-popular input:checked ~ .checkmark {
+.filter-popular input:checked~.checkmark {
   background-color: #7cbb00;
 }
 
@@ -214,7 +199,7 @@ body {
 }
 
 /* Show the checkmark when checked */
-.filter-popular input:checked ~ .checkmark:after {
+.filter-popular input:checked~.checkmark:after {
   display: block;
 }
 
@@ -232,6 +217,16 @@ body {
 .filters-by-range {}
 
 .filter-year {}
+
+.filter__input {
+  margin-top: 20px;
+  width: 100px;
+  border: 1px solid rgb(212, 212, 212);
+  outline: none;
+  padding-left: 10px;
+  border-radius: 4px;
+  text-align: center;
+}
 
 .filter-rating {}
 
@@ -300,7 +295,7 @@ body {
 
 .game-card__image {
   display: block;
-  
+
   width: 100%;
 }
 
@@ -331,3 +326,35 @@ body {
 .game-card__company {}
 
 .game-card__rating {}
+
+/* ======== SLIDER ========= */
+
+.noUi-connect {
+  background-color: #7cbb00;
+}
+
+.noUi-target {
+  background: rgb(212, 212, 212);
+  box-shadow: none;
+  border: none;
+}
+
+.noUi-horizontal {
+  height: 5px;
+  width: 190px;
+}
+
+.noUi-horizontal .noUi-handle {
+  top: -8px;
+  width: 20px;
+  height: 20px;
+}
+
+.noUi-handle {
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.noUi-handle::after,.noUi-handle::before {
+  display: none;
+}

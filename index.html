@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/nouislider.css">
   <link rel="stylesheet" href="style.css">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <title>Games store</title>
@@ -84,11 +85,16 @@
           <div class="filters-by-range">
             <div class="filter-year">
               <h3 class="filters__title">Year</h3>
-              <input type="range" min="2000" step="1" max="2022" value="2022">
+              <div id="range-slider-year"></div>
+              <input type="number" class="filter__input" min="1990" max="2022" id="input-year-0">
+              <input type="number" class="filter__input" min="1990" max="2022" id="input-year-1">
             </div>
             <div class="filter-rating">
               <h3 class="filters__title">Rating</h3>
-              <input type="range" min="1" step="1" max="5" value="3">
+              <div id="range-slider-rating"></div>
+              <input type="number" class="filter__input" min="0" max="10" id="input-rating-0">
+              <input type="number" class="filter__input" min="0" max="10" id="input-rating-1">
+
             </div>
             <div class="filter-popular">
               <label class="filter-popular__label" for="filter-popular__checkbox">
@@ -111,6 +117,7 @@
     </main>
   </div>
   <script src="./src/script/index.js" type="module"></script>
+  <script src="./src/script/nouislider.js"></script>
 </body>
 
 </html>

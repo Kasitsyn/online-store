@@ -4,6 +4,34 @@ import { init } from "./Init.js"
 import { storageData, store } from "./Storage.js"
 import { DOM } from "./UI.js"
 
+
+// ============= YEAR RANGE-SLIDER =============
+const createRangeSlider = (idSlider, idInputMin, idInputMax, min, max) => {
+  const rangeSliderYear = document.getElementById(idSlider);
+
+  noUiSlider.create(rangeSliderYear, {
+    start: [min, max],
+    connect: true,
+    step: 1,
+    range: {
+      'min': [min],
+      'max': [max]
+    }
+  });
+
+  const input0 = document.getElementById(idInputMin);
+  const input1 = document.getElementById(idInputMax);
+  const inputs = [input0, input1]
+  rangeSliderYear.noUiSlider.on('update', (values, handle) => {
+    inputs[handle].value = Math.round(values[handle])
+  })
+}
+
+createRangeSlider('range-slider-year', 'input-year-0', 'input-year-1', 1990, 2022)
+createRangeSlider('range-slider-rating', 'input-rating-0', 'input-rating-1', 0, 10)
+
+
+
 // ============= RENDER =============
 
 export const renderArticles = (articles) => {
@@ -82,7 +110,7 @@ export const getActiveFiltersOptions = (e, filtersActive) => {
 
 export const filterArticles = (articles, filtersActive) => {
   const filterOptions = new Set(filtersActive)
-  // console.log(articles)
+
   const filteredArticles = []
 
   articles.forEach(article => {
@@ -90,8 +118,7 @@ export const filterArticles = (articles, filtersActive) => {
       filterOptions.has(article[key].toLowerCase()) && filteredArticles.push(article)
     }
   })
-  
-  // console.log(filteredArticles)
+
   return filteredArticles
 }
 
