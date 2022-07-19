@@ -5,31 +5,6 @@ import { storageData, store } from "./Storage.js"
 import { DOM } from "./UI.js"
 
 
-// ============= YEAR RANGE-SLIDER =============
-const createRangeSlider = (idSlider, idInputMin, idInputMax, min, max) => {
-  const rangeSliderYear = document.getElementById(idSlider);
-
-  noUiSlider.create(rangeSliderYear, {
-    start: [min, max],
-    connect: true,
-    step: 1,
-    range: {
-      'min': [min],
-      'max': [max]
-    }
-  });
-
-  const input0 = document.getElementById(idInputMin);
-  const input1 = document.getElementById(idInputMax);
-  const inputs = [input0, input1]
-  rangeSliderYear.noUiSlider.on('update', (values, handle) => {
-    inputs[handle].value = Math.round(values[handle])
-  })
-}
-
-createRangeSlider('range-slider-year', 'input-year-0', 'input-year-1', 1990, 2022)
-createRangeSlider('range-slider-rating', 'input-rating-0', 'input-rating-1', 0, 10)
-
 
 
 // ============= RENDER =============
@@ -45,6 +20,46 @@ export const renderFilters = (filters, e) => {
   tags.forEach(tag => {
     filters.has(tag.innerText.toLowerCase()) ? tag.classList.add('filter__btn--active') : tag.classList.remove('filter__btn--active')
   })
+}
+
+export const createAndRenderRangeSlider = (idSlider, idInputMin, idInputMax, min, max) => {
+  const slider = document.getElementById(idSlider);
+
+  noUiSlider.create(slider, {
+    start: [min, max],
+    connect: true,
+    step: 1,
+    range: {
+      'min': [min],
+      'max': [max]
+    }
+  });
+
+  const input0 = document.getElementById(idInputMin);
+  const input1 = document.getElementById(idInputMax);
+  const inputs = [input0, input1]
+
+  slider.noUiSlider.on('update', (values, handle) => {
+    inputs[handle].value = Math.round(values[handle])
+
+
+  })
+
+  const setRangeSlider = (i, value) => {
+    let arr = [null, null]
+    arr[i] = value
+
+    slider.noUiSlider.set(arr)
+  }
+
+  inputs.forEach((el, index) => {
+    el.addEventListener('change', (e) => {
+      setRangeSlider(index, e.currentTarget.value)
+    })
+  })
+
+  return slider
+
 }
 
 // ============= SEARCH =============
@@ -94,7 +109,7 @@ export const sortArticles = (articles) => {
 
 }
 
-// ============= FILTER =============
+// ============= FILTER BY VALUE =============
 
 export const getActiveFiltersOptions = (e, filtersActive) => {
   const filterOptions = new Set(filtersActive)
@@ -111,8 +126,8 @@ export const getActiveFiltersOptions = (e, filtersActive) => {
 export const filterArticles = (articles, filtersActive) => {
   const filterOptions = new Set(filtersActive)
 
-  const filteredArticles = []
 
+  const filteredArticles = []
   articles.forEach(article => {
     for (let key in article) {
       filterOptions.has(article[key].toLowerCase()) && filteredArticles.push(article)
@@ -122,5 +137,31 @@ export const filterArticles = (articles, filtersActive) => {
   return filteredArticles
 }
 
+// ============= FILTER BY RANGE =============
+
+export const filterByRange = (articles, filtersActive) => {
+  const { year, rating } = { ...filtersActive }
+  console.log(year, rating)
+
+
+
+  const filteredArticles = []
+  articles.forEach(article => {
+    const isYearFit = article.year >= year[0] && article.year <= year[1]
+    const isRatingFit = article.rating >= rating[0] && article.rating <= rating[1]
+    isYearFit && isRatingFit && filteredArticles.push(article)
+  })
+  return filteredArticles
+}
+
+
+
+
+
+
+
+
+
+// =============  =============
 
 init()

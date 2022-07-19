@@ -51,11 +51,11 @@ export const storageData = [
     year: '2002',
     rating: '9',
   },
-  
+
 ]
 
 //============= STORE =============
- 
+
 export const store = {
   articles: [],
 
@@ -71,5 +71,15 @@ export const store = {
 
   storeFiltersActive(filterOptions) {
     this.filtersActive = new Set(filterOptions)
-  }
+  },
+
+  rangeFilters: {
+    year: [1990, 2022],
+    rating: [0, 10]
+  },
+  
+storeRangeFilters(rangeFilters, option) {
+  this.rangeFilters = {...this.rangeFilters, [option]: [...rangeFilters]}
+},
+
 }

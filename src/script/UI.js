@@ -11,7 +11,9 @@ export const DOM = {
   },
   filters: {
     filtersByValue: document.querySelector('.filters-by-value'),
-    tags: document.querySelectorAll('.filter .filter__btn')
+    tags: document.querySelectorAll('.filter .filter__btn'),
+    rangeInputs: document.querySelectorAll('.filter__input'),
+    rangeForms: document.querySelectorAll('.filter__form')
   },
   games: {
     wrapperGames: document.querySelector('.wrapper-games'),
