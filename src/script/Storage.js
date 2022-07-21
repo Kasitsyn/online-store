@@ -9,7 +9,8 @@ export const storageData = [
     company: 'remedy entertainment',
     platform: 'pc',
     year: '2001',
-    rating: '9',
+    rating: '7',
+    isPopular: 'false'
   },
   {
     id: '1',
@@ -19,7 +20,8 @@ export const storageData = [
     company: 'Io Interactive',
     platform: 'pc',
     year: '2000',
-    rating: '7',
+    rating: '5',
+    isPopular: 'false'
   },
   {
     id: '2',
@@ -30,6 +32,7 @@ export const storageData = [
     platform: 'pc',
     year: '2003',
     rating: '9',
+    isPopular: 'true'
   },
   {
     id: '3',
@@ -40,6 +43,7 @@ export const storageData = [
     platform: 'pc',
     year: '2004',
     rating: '9',
+    isPopular: 'true'
   },
   {
     id: '4',
@@ -47,16 +51,72 @@ export const storageData = [
     title: 'Mafia: The City of Lost Heaven',
     genre: 'action',
     company: 'Illusion Softworks',
-    platform: 'pc',
+    platform: 'xbox',
     year: '2002',
-    rating: '9',
+    rating: '7',
+    isPopular: 'false'
   },
-
+  {
+    id: '5',
+    urlToImg: '../../src/assets/img/games-img/last-of-us.jpg',
+    title: 'The Last of Us',
+    genre: 'action',
+    company: 'Naughty Dog Software',
+    platform: 'playStation',
+    year: '2013',
+    rating: '9',
+    isPopular: 'true'
+  },
+  {
+    id: '6',
+    urlToImg: '../../src/assets/img/games-img/assassins-creed.jpg',
+    title: "Assassin's Creed",
+    genre: 'action',
+    company: 'Rockstar Games',
+    platform: 'playstation',
+    year: '2007',
+    rating: '5',
+    isPopular: 'false'
+  },
+  {
+    id: '7',
+    urlToImg: '../../src/assets/img/games-img/watch-dogs.jpg',
+    title: "Watch Dogs",
+    genre: 'action',
+    company: 'Ubisoft',
+    platform: 'xbox',
+    year: '2014',
+    rating: '6',
+    isPopular: 'false'
+  },
+  {
+    id: '8',
+    urlToImg: '../../src/assets/img/games-img/far-cry5.jpg',
+    title: "Far Cry 5",
+    genre: 'action',
+    company: 'Ubisoft',
+    platform: 'xbox',
+    year: '2018',
+    rating: '4',
+    isPopular: 'false'
+  },
+  {
+    id: '9',
+    urlToImg: '../../src/assets/img/games-img/fallout3.jpg',
+    title: "Fallout 3",
+    genre: 'RPG',
+    company: 'Bethesda',
+    platform: 'playstation',
+    year: '2008',
+    rating: '6',
+    isPopular: 'false'
+  },
 ]
+
 
 //============= STORE =============
 
-export const store = {
+export let store = {
   articles: [],
 
   createArticles(data) {
@@ -67,19 +127,37 @@ export const store = {
     this.articles = [...data]
   },
 
-  filtersActive: new Set(),
+  filtersActive: localStorage.filtersActive ? new Set(JSON.parse(localStorage.getItem('filtersActive'))) : new Set(),
 
   storeFiltersActive(filterOptions) {
     this.filtersActive = new Set(filterOptions)
+    localStorage.setItem('filtersActive', JSON.stringify([...this.filtersActive]))
   },
 
-  rangeFilters: {
-    year: [1990, 2022],
-    rating: [0, 10]
+  rangeFilters: localStorage.rangeFilters ? JSON.parse(localStorage.getItem('rangeFilters')) : {year: [1990, 2022], rating: [0, 10]},
+
+  storeRangeFilters(rangeFilters, option) {
+    this.rangeFilters = { ...this.rangeFilters, [option]: [...rangeFilters] }
+    localStorage.setItem('rangeFilters', JSON.stringify(this.rangeFilters))
   },
-  
-storeRangeFilters(rangeFilters, option) {
-  this.rangeFilters = {...this.rangeFilters, [option]: [...rangeFilters]}
-},
+
+  isPopular: localStorage.rangeFilters ? localStorage.getItem('isPopular') : 'false',
+  togglePopularFilters(value) {
+    this.isPopular = value
+    localStorage.setItem('isPopular', this.isPopular)
+  },
+
+  cartValue: 0
 
 }
+
+// store.filtersActive =  
+// localStorage.rangeFilters && JSON.parse(localStorage.getItem('rangeFilters'))
+// localStorage.isPopular && localStorage.getItem('filtersActive')
+
+
+
+
+
+
+

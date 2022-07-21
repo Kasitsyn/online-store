@@ -1,5 +1,5 @@
 export class Article {
-  constructor({ id, urlToImg, title, genre, company, platform, year, rating, ...rest }) {
+  constructor({ id, urlToImg, title, genre, company, platform, year, rating, isPopular, ...rest }) {
     this.id = id
     this.urlToImg = urlToImg
     this.title = title
@@ -8,6 +8,7 @@ export class Article {
     this.platform = platform
     this.year = year
     this.rating = rating
+    this.isPopular = isPopular
   }
 
   //Article generation

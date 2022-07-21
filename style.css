@@ -38,8 +38,7 @@ body {
   cursor: pointer;
 }
 
-.cart__icon::before {
-  content: '3';
+.cart__value {
   vertical-align: baseline;
   display: block;
   width: 20px;
@@ -118,6 +117,7 @@ body {
   border: 1px solid rgb(212, 212, 212);
   background-color: #ffffff;
   border-radius: 4px;
+  outline: none;
 
 }
 
@@ -233,7 +233,7 @@ body {
 
 
 .filter__reset-btn {
-  display: block;
+  display: inline-block;
   margin-left: 20px;
   background-color: #00A1F1;
   border-radius: 4px;
@@ -249,6 +249,10 @@ body {
 
 .filter__reset-btn:active {
   background-color: #00466c;
+}
+
+.filter__reset-btn--settings {
+  
 }
 
 .games {
@@ -294,12 +298,13 @@ body {
 }
 
 .game-card__image {
-  display: block;
+  display: none;
 
   width: 100%;
 }
 
-.game-card::after {
+.game-card-mark {
+  display: block;
   content: '';
   width: 40px;
   height: 40px;

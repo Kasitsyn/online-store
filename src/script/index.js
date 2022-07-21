@@ -1,5 +1,6 @@
 'use strict'
 
+import { addGameCardHandler } from "./Handlers.js"
 import { init } from "./Init.js"
 import { storageData, store } from "./Storage.js"
 import { DOM } from "./UI.js"
@@ -12,6 +13,8 @@ import { DOM } from "./UI.js"
 export const renderArticles = (articles) => {
   DOM.games.wrapperGames.innerHTML = ''
   articles.forEach(article => DOM.games.wrapperGames.append(article.generateArticle()))
+  addGameCardHandler()
+
 }
 
 export const renderFilters = (filters, e) => {
@@ -22,11 +25,11 @@ export const renderFilters = (filters, e) => {
   })
 }
 
-export const createAndRenderRangeSlider = (idSlider, idInputMin, idInputMax, min, max) => {
+export const createAndRenderRangeSlider = (idSlider, idInputMin, idInputMax, min, max, current) => {
   const slider = document.getElementById(idSlider);
-
+  
   noUiSlider.create(slider, {
-    start: [min, max],
+    start: current,
     connect: true,
     step: 1,
     range: {
@@ -34,6 +37,8 @@ export const createAndRenderRangeSlider = (idSlider, idInputMin, idInputMax, min
       'max': [max]
     }
   });
+
+  // slider.noUiSlider.set([min, max])
 
   const input0 = document.getElementById(idInputMin);
   const input1 = document.getElementById(idInputMax);
@@ -44,6 +49,7 @@ export const createAndRenderRangeSlider = (idSlider, idInputMin, idInputMax, min
 
 
   })
+
 
   const setRangeSlider = (i, value) => {
     let arr = [null, null]
@@ -73,7 +79,7 @@ export const getSearchResults = (dataFromStore) => {
 // ============= SORT =============
 
 export const sortArticles = (articles) => {
-  const value = DOM.sort.select.value || 'by-name-up'
+  const value = localStorage.sortValue ? localStorage.getItem('sortValue') : 'by-name-up'
   const sortArticles = [...articles]
   const collator = new Intl.Collator('en', { sensitivity: 'base' });
 
@@ -126,7 +132,6 @@ export const getActiveFiltersOptions = (e, filtersActive) => {
 export const filterArticles = (articles, filtersActive) => {
   const filterOptions = new Set(filtersActive)
 
-
   const filteredArticles = []
   articles.forEach(article => {
     for (let key in article) {
@@ -141,9 +146,6 @@ export const filterArticles = (articles, filtersActive) => {
 
 export const filterByRange = (articles, filtersActive) => {
   const { year, rating } = { ...filtersActive }
-  console.log(year, rating)
-
-
 
   const filteredArticles = []
   articles.forEach(article => {
@@ -154,14 +156,25 @@ export const filterByRange = (articles, filtersActive) => {
   return filteredArticles
 }
 
+export const yearRangeSlider = createAndRenderRangeSlider('range-slider-year', 'input-year-0', 'input-year-1', 1990, 2022, store.rangeFilters.year)
+export const rateRangeSlider = createAndRenderRangeSlider('range-slider-rating', 'input-rating-0', 'input-rating-1', 0, 10, store.rangeFilters.rating)
 
 
+// ============= FILTER POPULAR =============
+
+export const filterByPopular = (articles, isPopular) => {
+  const filteredArticles = []
+
+  if (isPopular === 'true') {
+    articles.forEach(article => {
+      if (article.isPopular === 'true') filteredArticles.push(article)
+    })
+  }
+  return filteredArticles
+}
+
+//============= LOCAL STORAGE =============
 
 
-
-
-
-
-// =============  =============
 
 init()
