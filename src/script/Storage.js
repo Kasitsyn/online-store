@@ -3,7 +3,7 @@ import { generateArticles } from "./Article.js"
 export const storageData = [
   {
     id: '0',
-    urlToImg: './src/assets/img/games-img/max-payne.jpg',
+    urlToImg: './assets/img/games-img/max-payne.jpg',
     title: 'Max Payne',
     genre: 'action',
     company: 'remedy entertainment',
@@ -14,7 +14,7 @@ export const storageData = [
   },
   {
     id: '1',
-    urlToImg: './src/assets/img/games-img/hitman-47.jpg',
+    urlToImg: './assets/img/games-img/hitman-47.jpg',
     title: 'Hitman: Codename 47',
     genre: 'action',
     company: 'Io Interactive',
@@ -25,7 +25,7 @@ export const storageData = [
   },
   {
     id: '2',
-    urlToImg: './src/assets/img/games-img/warcraft-frozen.jpg',
+    urlToImg: './assets/img/games-img/warcraft-frozen.jpg',
     title: 'WARCRAFT III: THE FROZEN THRONE',
     genre: 'strategy',
     company: 'remedy entertainment',
@@ -36,7 +36,7 @@ export const storageData = [
   },
   {
     id: '3',
-    urlToImg: './src/assets/img/games-img/HL2.jpg',
+    urlToImg: './assets/img/games-img/HL2.jpg',
     title: 'Half Life 2',
     genre: 'action',
     company: 'valve',
@@ -47,7 +47,7 @@ export const storageData = [
   },
   {
     id: '4',
-    urlToImg: './src/assets/img/games-img/mafia.jpg',
+    urlToImg: './assets/img/games-img/mafia.jpg',
     title: 'Mafia: The City of Lost Heaven',
     genre: 'action',
     company: 'Illusion Softworks',
@@ -58,7 +58,7 @@ export const storageData = [
   },
   {
     id: '5',
-    urlToImg: './src/assets/img/games-img/last-of-us.jpg',
+    urlToImg: './assets/img/games-img/last-of-us.jpg',
     title: 'The Last of Us',
     genre: 'action',
     company: 'Naughty Dog Software',
@@ -69,7 +69,7 @@ export const storageData = [
   },
   {
     id: '6',
-    urlToImg: './src/assets/img/games-img/assassins-creed.jpg',
+    urlToImg: './assets/img/games-img/assassins-creed.jpg',
     title: "Assassin's Creed",
     genre: 'action',
     company: 'Rockstar Games',
@@ -80,7 +80,7 @@ export const storageData = [
   },
   {
     id: '7',
-    urlToImg: './src/assets/img/games-img/watch-dogs.jpg',
+    urlToImg: './assets/img/games-img/watch-dogs.jpg',
     title: "Watch Dogs",
     genre: 'action',
     company: 'Ubisoft',
@@ -91,7 +91,7 @@ export const storageData = [
   },
   {
     id: '8',
-    urlToImg: './src/assets/img/games-img/far-cry5.jpg',
+    urlToImg: './assets/img/games-img/far-cry5.jpg',
     title: "Far Cry 5",
     genre: 'action',
     company: 'Ubisoft',
@@ -102,7 +102,7 @@ export const storageData = [
   },
   {
     id: '9',
-    urlToImg: './src/assets/img/games-img/fallout3.jpg',
+    urlToImg: './assets/img/games-img/fallout3.jpg',
     title: "Fallout 3",
     genre: 'RPG',
     company: 'Bethesda',

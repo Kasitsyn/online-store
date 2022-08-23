@@ -1,7 +1,7 @@
 //============= INIT =============
 
 import { addFilterHardResetBtnHandler, addFilterPopularHandler, addFilterResetBtnHandler, addFilterTagsHandler, addGameCardHandler, addRangeFilterHandler, addSearchFormHandler, addSearchInputHandler, addSearchSubmitHandler, addSortSelectHandler } from "./Handlers.js"
-import { renderArticles, createAndRenderRangeSlider, sortArticles, renderFilters } from "./index.js"
+import { renderArticles, createAndRenderRangeSlider, sortArticles, renderFilters } from "../index.js"
 import { storageData, store } from "./Storage.js"
 import { DOM } from "./UI.js"
 

@@ -1,7 +1,7 @@
 //============= HANDLERS =============
 
-import { filterArticles, filterByPopular, filterByRange, getActiveFiltersOptions, getSearchResults, rateRangeSlider, renderArticles, renderFilters, sortArticles } from "./index.js"
-import { yearRangeSlider } from "./index.js"
+import { filterArticles, filterByPopular, filterByRange, getActiveFiltersOptions, getSearchResults, rateRangeSlider, renderArticles, renderFilters, sortArticles } from "../index.js"
+import { yearRangeSlider } from "../index.js"
 import { storageData, store } from "./Storage.js"
 import { DOM } from "./UI.js"
 

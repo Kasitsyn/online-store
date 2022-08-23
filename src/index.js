@@ -1,9 +1,10 @@
-'use strict'
 
-import { addGameCardHandler } from "./Handlers.js"
-import { init } from "./Init.js"
-import { storageData, store } from "./Storage.js"
-import { DOM } from "./UI.js"
+import { addGameCardHandler } from "./script/Handlers.js"
+import { init } from "./script/Init.js"
+import { storageData, store } from "./script/Storage.js"
+import { DOM } from "./script/UI.js"
+// import './style.css'
+// import './css/nouislider.css'
 
 
 
@@ -174,7 +175,5 @@ export const filterByPopular = (articles, isPopular) => {
 }
 
 //============= LOCAL STORAGE =============
-
-
 
 init()
