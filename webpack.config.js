@@ -1,6 +1,7 @@
 const path = require('path');
 const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const baseConfig = {
@@ -8,6 +9,10 @@ const baseConfig = {
     mode: 'development',
     module: {
         rules: [
+            {
+                test: /\.(?:gif|jpeg|jpg|png|svg)/i,
+                type: 'asset/resource',
+            },
             {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
@@ -25,6 +30,15 @@ const baseConfig = {
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './src/index.html'),
             filename: 'index.html',
+        }),
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: './src/assets',
+                    to: './assets',
+                    noErrorOnMissing: true,
+                },
+            ],
         }),
         new CleanWebpackPlugin(),
     ],
